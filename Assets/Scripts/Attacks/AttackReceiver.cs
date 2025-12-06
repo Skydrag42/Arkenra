@@ -1,3 +1,4 @@
+using LogHelper;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -15,7 +16,8 @@ public class AttackReceiver : MonoBehaviour
 			Attack attack = attackHolder.currentAttack;
 			if (attack.isMultiHit || !attackHolder.damageDealt)
 			{
-				entity.TakeDamage(attack, attackHolder.currentFollowUpState);
+				Debug.Log("Sending attack to entity " % Colorize.Olive + entity.name % Colorize.Cyan);
+				entity.ReceiveAttack(attack, attackHolder.currentFollowUpState);
 				attackHolder.damageDealt = true;
 			}
 		}

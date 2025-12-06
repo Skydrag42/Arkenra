@@ -13,5 +13,13 @@ MonoBehaviour:
   m_Name: JLA_BigMetalSlate
   m_EditorClassIdentifier: 
   attackName: JLA
-  baseDamage: 341
-  followUpBaseDamage: 
+  baseDamage:
+    damageList:
+    - type: 0
+      value: 130
+      ignoreArmor: 0
+      onHpMultiplier: 1
+      onApMultiplier: 1
+      buildupValue: 0
+  followUpBaseDamage: []
+  isMultiHit: 0

@@ -13,5 +13,20 @@ MonoBehaviour:
   m_Name: LA_BigMetalSlate
   m_EditorClassIdentifier: 
   attackName: LA
-  baseDamage: 222
-  followUpBaseDamage: 990000002b020000
+  baseDamage:
+    damageList:
+    - type: 0
+      value: 100
+      ignoreArmor: 0
+      onHpMultiplier: 1
+      onApMultiplier: 1
+      buildupValue: 0
+  followUpBaseDamage:
+  - damageList:
+    - type: 0
+      value: 270
+      ignoreArmor: 0
+      onHpMultiplier: 0
+      onApMultiplier: 0
+      buildupValue: 0
+  isMultiHit: 1

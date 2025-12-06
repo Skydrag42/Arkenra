@@ -61,10 +61,10 @@ Rigidbody:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 423969932971711644}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
   m_InertiaTensor: {x: 1, y: 1, z: 1}
   m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
@@ -244,13 +244,38 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4bb18a309cb32134a94c033736dc2e18, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 6572
-  health: 6572
-  healthBar: {fileID: 2783676149845854289}
-  damageResistance: 0.2
+  entityData:
+    healthPoints: 500
+    armorPoints: 200
+    armorRegenSpeed: 50
+    armorRegenCooldown: 10
+  defaultEntityData:
+    healthPoints: 5000
+    armorPoints: 0
+    armorRegenSpeed: 0
+    armorRegenCooldown: 0
+  baseResistances:
+    resistances:
+    - type: 0
+      resistanceValue: 20
+      buildupResistanceValue: 0
+  hp:
+    currentValue: 0
+    maxValue: 0
+  ap:
+    currentValue: 0
+    maxValue: 0
+  poisonEffectPrefab: {fileID: 0}
+  charmEffectPrefab: {fileID: 0}
+  blightEffectPrefab: {fileID: 0}
+  lightningEffectPrefab: {fileID: 0}
   targetLocks:
   - {fileID: 3782686700609370212}
   attackState: 0
+  healthBar: {fileID: 2783676149845854289}
+  armorBar: {fileID: 0}
+  onlyShowBarsOnHit: 0
+  timeBeforeHidingBars: 2
   animator: {fileID: 1776573049631864694}
   lookRotationSpeed: 90
   allowLookAtPlayer: 1
@@ -266,7 +291,9 @@ MonoBehaviour:
   attackHolder: {fileID: 8453447482304530729}
   closeRangeAttacks:
   - attack: {fileID: 11400000, guid: e3878cff6993f3a49a3a57a775335595, type: 2}
-    probability: 1
+    probability: 0.8
+  - attack: {fileID: 11400000, guid: d40a1155ddae2364cbc26837fcb25dc1, type: 2}
+    probability: 0.2
   midRangeAttacks:
   - attack: {fileID: 11400000, guid: d40a1155ddae2364cbc26837fcb25dc1, type: 2}
     probability: 1
@@ -275,7 +302,7 @@ MonoBehaviour:
   attackDelay: {x: 1, y: 10}
   attackRange:
     min: 0
-    closeLimit: 12
+    closeLimit: 6
     midLimit: 20
     longLimit: 20
 --- !u!114 &8453447482304530729
@@ -292,6 +319,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentAttack: {fileID: 0}
   currentFollowUpState: 0
+  damageDealt: 0
 --- !u!54 &4863945534363551462
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -299,10 +327,10 @@ Rigidbody:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1001648263884463786}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Mass: 10000
-  m_Drag: 0
-  m_AngularDrag: 0.05
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
   m_InertiaTensor: {x: 1, y: 1, z: 1}
   m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
@@ -390,6 +418,11 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
+  m_ForceMeshLod: -1
+  m_MeshLodSelectionBias: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -411,9 +444,11 @@ MeshRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
+  m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
 --- !u!1 &3787243699360999966
 GameObject:
@@ -485,7 +520,7 @@ Transform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!96 &3309318982250203576
 TrailRenderer:
-  serializedVersion: 3
+  serializedVersion: 4
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -501,6 +536,11 @@ TrailRenderer:
   m_ReflectionProbeUsage: 0
   m_RayTracingMode: 0
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
+  m_ForceMeshLod: -1
+  m_MeshLodSelectionBias: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -522,9 +562,11 @@ TrailRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
+  m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_MaskInteraction: 0
   m_Time: 0.5
   m_PreviewTimeScale: 1
   m_Parameters:
@@ -583,7 +625,6 @@ TrailRenderer:
     shadowBias: 0.5
     generateLightingData: 0
   m_MinVertexDistance: 0.1
-  m_MaskInteraction: 0
   m_Autodestruct: 0
   m_Emitting: 1
   m_ApplyActiveColorSpace: 1
@@ -645,6 +686,11 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
+  m_ForceMeshLod: -1
+  m_MeshLodSelectionBias: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -666,9 +712,11 @@ MeshRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
+  m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
 --- !u!1 &5535961235106283793
 GameObject:
@@ -760,6 +808,11 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
+  m_ForceMeshLod: -1
+  m_MeshLodSelectionBias: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -781,9 +834,11 @@ MeshRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
+  m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
 --- !u!136 &4350074712317757099
 CapsuleCollider:
@@ -867,6 +922,11 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
+  m_ForceMeshLod: -1
+  m_MeshLodSelectionBias: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -888,9 +948,11 @@ MeshRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
+  m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
 --- !u!65 &1525926420312119700
 BoxCollider:
@@ -1052,6 +1114,11 @@ VFXRenderer:
   m_ReflectionProbeUsage: 0
   m_RayTracingMode: 0
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
+  m_ForceMeshLod: -1
+  m_MeshLodSelectionBias: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_StaticBatchInfo:
@@ -1071,9 +1138,11 @@ VFXRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
+  m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_MaskInteraction: 0
 --- !u!114 &149469537337445646
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1340,7 +1409,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9d7ed4b2b50797d45bfdedc0b03adda9, type: 3}
+  m_Script: {fileID: 11500000, guid: 72a19f94c27a91140b84a601e6ead1c8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!224 &3319177940373712944 stripped

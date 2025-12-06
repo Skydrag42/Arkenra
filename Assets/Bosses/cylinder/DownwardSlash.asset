@@ -13,4 +13,13 @@ MonoBehaviour:
   m_Name: DownwardSlash
   m_EditorClassIdentifier: 
   attackName: downwardSlash
-  baseDamage: 400
+  baseDamage:
+    damageList:
+    - type: 0
+      value: 100
+      ignoreArmor: 0
+      onHpMultiplier: 1
+      onApMultiplier: 1
+      buildupValue: 0
+  followUpBaseDamage: []
+  isMultiHit: 0

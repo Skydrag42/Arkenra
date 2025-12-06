@@ -479,8 +479,8 @@ public partial class PlayerController : Entity
 				lockedCam.enabled = true;
 				cameraIsLocked = true;
 				currentLockedEntity = closest.GetTargetLock();
+				lockDotUI.gameObject.SetActive(true);
 			}
-			lockDotUI.gameObject.SetActive(true);
 		}
 	}
 
@@ -509,12 +509,15 @@ public partial class PlayerController : Entity
 	{
 		if (!IsDashing)
 		{
-			animator.SetTrigger("HA");
 			if (!grounded)
+			{
+				animator.SetTrigger("HA");
+				SetAttackState("PreparingAttack");
 				attackHolder.SetCurrentAttack(currentAttackSet.jumpingHeavyAttack);
-			else
-				attackHolder.SetCurrentAttack(currentAttackSet.heavyAttack);
-			SetAttackState("PreparingAttack");
+			}
+			// currently no animaton defined for HA in animator
+			//else
+			//	attackHolder.SetCurrentAttack(currentAttackSet.heavyAttack);
 		}
 	}
 

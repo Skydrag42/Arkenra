@@ -234,10 +234,10 @@ Rigidbody:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2595120263149943769}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
   m_InertiaTensor: {x: 1, y: 1, z: 1}
   m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
@@ -266,12 +266,37 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b7419861dd1dddf40a719d879bd35c85, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 500
-  health: 500
-  healthBar: {fileID: 0}
-  damageResistance: 0.2
+  entityData:
+    healthPoints: 500
+    armorPoints: 0
+    armorRegenSpeed: 0
+    armorRegenCooldown: 0
+  defaultEntityData:
+    healthPoints: 500
+    armorPoints: 0
+    armorRegenSpeed: 0
+    armorRegenCooldown: 0
+  baseResistances:
+    resistances:
+    - type: 0
+      resistanceValue: 20
+      buildupResistanceValue: 0
+  hp:
+    currentValue: 0
+    maxValue: 0
+  ap:
+    currentValue: 0
+    maxValue: 0
+  poisonEffectPrefab: {fileID: 0}
+  charmEffectPrefab: {fileID: 0}
+  blightEffectPrefab: {fileID: 0}
+  lightningEffectPrefab: {fileID: 0}
   targetLocks: []
   attackState: 0
+  healthBar: {fileID: 0}
+  armorBar: {fileID: 0}
+  onlyShowBarsOnHit: 0
+  timeBeforeHidingBars: 2
   renderer: {fileID: 6596264842733941804}
   xbox: {fileID: 5975896927866126468}
   animator: {fileID: 7813622993672749494}
@@ -1502,6 +1527,8 @@ MeshRenderer:
   m_RayTracingAccelStructBuildFlagsOverride: 0
   m_RayTracingAccelStructBuildFlags: 1
   m_SmallMeshCulling: 1
+  m_ForceMeshLod: -1
+  m_MeshLodSelectionBias: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -1523,9 +1550,11 @@ MeshRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
+  m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
 --- !u!33 &2762254014773297404
 MeshFilter:

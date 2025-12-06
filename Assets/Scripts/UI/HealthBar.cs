@@ -22,6 +22,17 @@ public class HealthBar : ProgressBar
 	private Coroutine damageRoutine;
 	private int currentDamageValue = 0;
 
+	public GameObject GFXParent;
+
+	public override int MaxValue
+	{
+		set
+		{
+			base.MaxValue = value;
+            decreaseGFX.fillAmount = (float)Current / MaxValue;
+        }
+	}
+
 	protected override void Awake()
 	{
 		base.Awake();
@@ -32,9 +43,10 @@ public class HealthBar : ProgressBar
 	{
 		if (value < current)
 		{
+			SetNewDamageValue(current - value);
 			if (visualDecreaseRoutine != null)
 			{
-				decreaseGFX.fillAmount = (float)current / maxValue;
+				//decreaseGFX.fillAmount = (float)current / maxValue;
 				StopCoroutine(visualDecreaseRoutine);
 			}
 			visualDecreaseRoutine = StartCoroutine(VisualDecrease());
@@ -52,7 +64,10 @@ public class HealthBar : ProgressBar
 		}
 	}
 
-	public void SetNewDamageValue(int value)
+	// TODO:
+	// use inside change current amount
+	// maybe add +green value for healing
+	private void SetNewDamageValue(int value)
 	{
 		if (!showDamage) return;
 		if (damageRoutine != null)
@@ -97,5 +112,15 @@ public class HealthBar : ProgressBar
 		}
 		decreaseGFX.fillAmount = (float)Current / MaxValue;
 		barGFX.fillAmount = (float)Current / MaxValue;
+	}
+
+	public void HideHealthBar()
+	{
+		GFXParent.SetActive(false);
+	}
+
+	public void ShowHealthBar()
+	{
+		GFXParent.SetActive(true);
 	}
 }

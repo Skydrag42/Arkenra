@@ -9,7 +9,7 @@ public class ProgressBar : MonoBehaviour
 	
 	[SerializeField]
 	protected int maxValue = 500;
-	public int MaxValue
+	public virtual int MaxValue
 	{
 		get { return maxValue; }
 		set 
@@ -17,7 +17,8 @@ public class ProgressBar : MonoBehaviour
 			maxValue = value;
 			if (!isFixedSize)
 				((RectTransform)transform).SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, maxValue * sizeValueRatio);
-		}
+            barGFX.fillAmount = (float)(current - minValue) / (maxValue - minValue);
+        }
 	}
 
 	[SerializeField]

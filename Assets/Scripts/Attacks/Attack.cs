@@ -6,7 +6,7 @@ using UnityEngine;
 public class Attack : ScriptableObject
 {
 	public string attackName;
-	public int baseDamage = 10;
-	public List<int> followUpBaseDamage = new List<int>();
+	public Damage baseDamage;
+	public List<Damage> followUpBaseDamage = new List<Damage>();
 	public bool isMultiHit = false;
 }

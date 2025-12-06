@@ -1,5 +1,13 @@
 using UnityEngine;
 
+public enum AttackState
+{
+    Nothing,
+    PreparingAttack,
+    Attacking,
+    FinishingAttack
+}
+
 public class AttackStateEventHelper : MonoBehaviour
 {
     public Entity entity;

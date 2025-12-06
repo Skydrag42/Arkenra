@@ -13,4 +13,13 @@ MonoBehaviour:
   m_Name: HorizontalSlash
   m_EditorClassIdentifier: 
   attackName: horizontalSlash
-  baseDamage: 200
+  baseDamage:
+    damageList:
+    - type: 0
+      value: 50
+      ignoreArmor: 0
+      onHpMultiplier: 1
+      onApMultiplier: 1
+      buildupValue: 0
+  followUpBaseDamage: []
+  isMultiHit: 0
