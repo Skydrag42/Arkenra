@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eaa1ba4276905b442bcaa5376cc4acbd, type: 3}
+  m_Name: BigMetalSlateAS
+  m_EditorClassIdentifier: 
+  animatorController: {fileID: 9100000, guid: a72124bd9c5dac543a61a657a9f42aa1, type: 2}
+  lightAttack: {fileID: 11400000, guid: e5b886f84e0f14d48ac11ac249d07fb1, type: 2}
+  heavyAttack: {fileID: 11400000, guid: 8bc540aec8acba14bb9b1288008ebf2a, type: 2}
+  jumpingLightAttack: {fileID: 11400000, guid: c222151c144770a4bbd5d505e3197de3, type: 2}
+  jumpingHeavyAttack: {fileID: 11400000, guid: e2a423fd83117c546bcfd6c7eadb62b2, type: 2}
