@@ -24,9 +24,16 @@ MonoBehaviour:
   followUpBaseDamage:
   - damageList:
     - type: 0
+      value: 80
+      ignoreArmor: 0
+      onHpMultiplier: 1
+      onApMultiplier: 1
+      buildupValue: 0
+  - damageList:
+    - type: 0
       value: 270
       ignoreArmor: 0
-      onHpMultiplier: 0
-      onApMultiplier: 0
+      onHpMultiplier: 1
+      onApMultiplier: 1
       buildupValue: 0
   isMultiHit: 1

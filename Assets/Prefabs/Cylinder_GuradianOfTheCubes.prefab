@@ -184,6 +184,7 @@ GameObject:
   - component: {fileID: 8453447482304530729}
   - component: {fileID: 4863945534363551462}
   - component: {fileID: 5084267639452261332}
+  - component: {fileID: 3309610526948113363}
   m_Layer: 0
   m_Name: Cylinder_GuradianOfTheCubes
   m_TagString: Untagged
@@ -291,15 +292,15 @@ MonoBehaviour:
   attackHolder: {fileID: 8453447482304530729}
   closeRangeAttacks:
   - attack: {fileID: 11400000, guid: e3878cff6993f3a49a3a57a775335595, type: 2}
-    probability: 0.8
+    probability: 0.6
   - attack: {fileID: 11400000, guid: d40a1155ddae2364cbc26837fcb25dc1, type: 2}
-    probability: 0.2
+    probability: 0.4
   midRangeAttacks:
   - attack: {fileID: 11400000, guid: d40a1155ddae2364cbc26837fcb25dc1, type: 2}
     probability: 1
   longRangeAttacks: []
   preferredRange: 0
-  attackDelay: {x: 1, y: 10}
+  attackDelay: {x: 1, y: 3}
   attackRange:
     min: 0
     closeLimit: 6
@@ -360,6 +361,95 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   entity: {fileID: 4691768843959056878}
+--- !u!114 &3309610526948113363
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1001648263884463786}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cbe80126baae4cf0ba8194133e415a29, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::AnimationEventReceiver
+  animationEvents:
+  - eventName: OnPrepareAttack
+    OnAnimationEvent:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 4691768843959056878}
+          m_TargetAssemblyTypeName: CylinderBoss, Assembly-CSharp
+          m_MethodName: SetAttackState
+          m_Mode: 5
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: PreparingAttack
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventName: OnAttack
+    OnAnimationEvent:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 4691768843959056878}
+          m_TargetAssemblyTypeName: CylinderBoss, Assembly-CSharp
+          m_MethodName: SetAttackState
+          m_Mode: 5
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: Attacking
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventName: OnFinishAttack
+    OnAnimationEvent:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 4691768843959056878}
+          m_TargetAssemblyTypeName: CylinderBoss, Assembly-CSharp
+          m_MethodName: SetAttackState
+          m_Mode: 5
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: FinishingAttack
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventName: OnNothing
+    OnAnimationEvent:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 4691768843959056878}
+          m_TargetAssemblyTypeName: CylinderBoss, Assembly-CSharp
+          m_MethodName: SetAttackState
+          m_Mode: 5
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: Nothing
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventName: OnCombo0
+    OnAnimationEvent:
+      m_PersistentCalls:
+        m_Calls: []
+  - eventName: OnCombo1
+    OnAnimationEvent:
+      m_PersistentCalls:
+        m_Calls: []
+  - eventName: OnCombo2
+    OnAnimationEvent:
+      m_PersistentCalls:
+        m_Calls: []
 --- !u!1 &1184815216505540326
 GameObject:
   m_ObjectHideFlags: 0

@@ -126,7 +126,16 @@ public class Entity : MonoBehaviour
             return targetLocks[0];
     }
 
-    public virtual void SetAttackState(string state) { }
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="state">Legacy string param for when using UnityEvents that still doesn't support enums...</param>
+    public virtual void SetAttackState(string state) 
+    {
+        attackState = System.Enum.Parse<AttackState>(state, true);
+        SetAttackState(attackState);
+    }
+    public virtual void SetAttackState(AttackState state) { }
 
     public virtual void ReceiveAttack(Attack attack, int followUpState)
     {

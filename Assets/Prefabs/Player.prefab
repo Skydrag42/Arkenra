@@ -318,8 +318,8 @@ MonoBehaviour:
   allowDash: 1
   maxDashes: 1
   dashSpeed: 30
-  dashDuration: 0.08
-  dashCooldown: 1
+  dashDuration: 0.15
+  dashCooldown: 0.7
   superDashPower: 17.5
   framePerfectMultiplicator: 1.2
   dashVFX: {fileID: 0}
@@ -17666,6 +17666,10 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 3539470634677858483}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 9c4be4a5ff516be4a8095928b27e61b7,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 3102820011430103190}
     - targetCorrespondingSourceObject: {fileID: 6029034083783371136, guid: 9c4be4a5ff516be4a8095928b27e61b7,
         type: 3}
       insertIndex: -1
@@ -17770,6 +17774,163 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 13a147e835b0ea548bc9708617cf7111, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &3102820011430103190
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7142867982422720648}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cbe80126baae4cf0ba8194133e415a29, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::AnimationEventReceiver
+  animationEvents:
+  - eventName: EnableHitboxes
+    OnAnimationEvent:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 3539470634677858483}
+          m_TargetAssemblyTypeName: WeaponEventHelper, Assembly-CSharp
+          m_MethodName: ToggleXbox
+          m_Mode: 3
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 1
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventName: DisableHitboxes
+    OnAnimationEvent:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 3539470634677858483}
+          m_TargetAssemblyTypeName: WeaponEventHelper, Assembly-CSharp
+          m_MethodName: ToggleXbox
+          m_Mode: 3
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventName: OnPrepareAttack
+    OnAnimationEvent:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 4295186860704866236}
+          m_TargetAssemblyTypeName: AttackStateEventHelper, Assembly-CSharp
+          m_MethodName: SetAttackState
+          m_Mode: 5
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: PreparingAttack
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventName: OnAttack
+    OnAnimationEvent:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 4295186860704866236}
+          m_TargetAssemblyTypeName: AttackStateEventHelper, Assembly-CSharp
+          m_MethodName: SetAttackState
+          m_Mode: 5
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: Attacking
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventName: OnFinishAttack
+    OnAnimationEvent:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 4295186860704866236}
+          m_TargetAssemblyTypeName: AttackStateEventHelper, Assembly-CSharp
+          m_MethodName: SetAttackState
+          m_Mode: 5
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: FinishingAttack
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventName: OnNothing
+    OnAnimationEvent:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 4295186860704866236}
+          m_TargetAssemblyTypeName: AttackStateEventHelper, Assembly-CSharp
+          m_MethodName: SetAttackState
+          m_Mode: 5
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: Nothing
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventName: OnCombo0
+    OnAnimationEvent:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 4295186860704866236}
+          m_TargetAssemblyTypeName: AttackStateEventHelper, Assembly-CSharp
+          m_MethodName: SetFollowUpState
+          m_Mode: 3
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: Nothing
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventName: OnCombo1
+    OnAnimationEvent:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 4295186860704866236}
+          m_TargetAssemblyTypeName: AttackStateEventHelper, Assembly-CSharp
+          m_MethodName: SetFollowUpState
+          m_Mode: 3
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 1
+            m_FloatArgument: 0
+            m_StringArgument: Nothing
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventName: OnCombo2
+    OnAnimationEvent:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 4295186860704866236}
+          m_TargetAssemblyTypeName: AttackStateEventHelper, Assembly-CSharp
+          m_MethodName: SetFollowUpState
+          m_Mode: 3
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 2
+            m_FloatArgument: 0
+            m_StringArgument: Nothing
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!4 &7524178218079820338 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 9c4be4a5ff516be4a8095928b27e61b7,

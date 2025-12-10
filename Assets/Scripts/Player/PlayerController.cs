@@ -125,6 +125,9 @@ public partial class PlayerController : Entity
 
 	private void Start()
 	{
+		dashVFX.gameObject.SetActive(true);
+		superDashVFX.gameObject.SetActive(true);
+        ResetStatus();
 		freeLookCam.ForceCameraPosition(defaultCam.position, defaultCam.rotation);
 		rb = GetComponent<Rigidbody>();
 		attackHolder = GetComponent<AttackHolder>();
@@ -501,7 +504,7 @@ public partial class PlayerController : Entity
 				attackHolder.SetCurrentAttack(currentAttackSet.jumpingLightAttack);
 			else
 				attackHolder.SetCurrentAttack(currentAttackSet.lightAttack);
-			SetAttackState("PreparingAttack");
+			SetAttackState(AttackState.PreparingAttack);
 		}
 	}
 
@@ -512,7 +515,7 @@ public partial class PlayerController : Entity
 			if (!grounded)
 			{
 				animator.SetTrigger("HA");
-				SetAttackState("PreparingAttack");
+				SetAttackState(AttackState.PreparingAttack);
 				attackHolder.SetCurrentAttack(currentAttackSet.jumpingHeavyAttack);
 			}
 			// currently no animaton defined for HA in animator
@@ -532,36 +535,35 @@ public partial class PlayerController : Entity
 		IsDashing = false;
 	}
 
-	public override void SetAttackState(string state)
-	{
-		attackState = System.Enum.Parse<AttackState>(state, true);
-		if (attackState == AttackState.Nothing)
-		{
-			allowMovement = true;
-			allowRotation = true;
-			allowJump = true;
-			allowDash = true;
-		}
-		else if (attackState == AttackState.Attacking)
-		{
-			allowMovement = false;
-			allowRotation = false;
-			allowJump = false;
-			allowDash = false;
-		}
-		else if (attackState == AttackState.PreparingAttack)
-		{
-			allowMovement = false;
-			allowRotation = true;
-			allowJump = false;
-			allowDash = false;
-		}
-		else if (attackState == AttackState.FinishingAttack)
-		{
-			allowMovement = false;
-			allowRotation = false;
-			allowJump = false;
-			allowDash = true;
-		}
-	}
+    public override void SetAttackState(AttackState state)
+    {
+        if (attackState == AttackState.Nothing)
+        {
+            allowMovement = true;
+            allowRotation = true;
+            allowJump = true;
+            allowDash = true;
+        }
+        else if (attackState == AttackState.Attacking)
+        {
+            allowMovement = false;
+            allowRotation = false;
+            allowJump = false;
+            allowDash = false;
+        }
+        else if (attackState == AttackState.PreparingAttack)
+        {
+            allowMovement = false;
+            allowRotation = true;
+            allowJump = false;
+            allowDash = false;
+        }
+        else if (attackState == AttackState.FinishingAttack)
+        {
+            allowMovement = false;
+            allowRotation = false;
+            allowJump = false;
+            allowDash = true;
+        }
+    }
 }

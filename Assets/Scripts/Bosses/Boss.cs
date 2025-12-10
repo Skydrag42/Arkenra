@@ -212,9 +212,9 @@ public class Boss : Entity
         isRotating = true;
     }
 
-    public override void SetAttackState(string state)
+
+    public override void SetAttackState(AttackState state)
 	{
-        attackState = System.Enum.Parse<AttackState>(state, true);
         if (attackState == AttackState.Nothing)
 		{
             move = allowMove;
@@ -241,6 +241,7 @@ public class Boss : Entity
             lookAtPlayer = allowLookAtPlayer;
         }
 	}
+
 
     public void CheckRange()
 	{

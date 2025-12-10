@@ -78,7 +78,7 @@ AnimatorStateTransition:
   serializedVersion: 3
   m_TransitionDuration: 0
   m_TransitionOffset: 0
-  m_ExitTime: 0.49830922
+  m_ExitTime: 0.4983092
   m_HasExitTime: 0
   m_HasFixedDuration: 1
   m_InterruptionSource: 0
@@ -137,6 +137,30 @@ AnimatorStateTransition:
   m_InterruptionSource: 2
   m_OrderedInterruption: 1
   m_CanTransitionToSelf: 1
+--- !u!114 &-6645520851508240738
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 89ae7ffbd33b42658b02ec41fecc0797, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::AnimationEventStateBehaviour
+  events:
+  - eventName: DisableHitboxes
+    triggerTime: 0.089
+    hasTriggered: 0
+  - eventName: OnFinishAttack
+    triggerTime: 0.089
+    hasTriggered: 0
+  - eventName: OnNothing
+    triggerTime: 0.8
+    hasTriggered: 0
+  sendOnStateExitEvent: 0
+  onStateExitEventName: 
 --- !u!1101 &-6637138636565868582
 AnimatorStateTransition:
   m_ObjectHideFlags: 1
@@ -220,6 +244,33 @@ AnimatorState:
   m_MirrorParameter: 
   m_CycleOffsetParameter: 
   m_TimeParameter: 
+--- !u!114 &-5508207793106825438
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 89ae7ffbd33b42658b02ec41fecc0797, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::AnimationEventStateBehaviour
+  events:
+  - eventName: OnPrepareAttack
+    triggerTime: 0
+    hasTriggered: 0
+  - eventName: EnableHitboxes
+    triggerTime: 0.558
+    hasTriggered: 0
+  - eventName: OnAttack
+    triggerTime: 0.558
+    hasTriggered: 0
+  - eventName: OnCombo0
+    triggerTime: 0.558
+    hasTriggered: 0
+  sendOnStateExitEvent: 0
+  onStateExitEventName: 
 --- !u!1102 &-5341078595202185458
 AnimatorState:
   serializedVersion: 6
@@ -235,7 +286,8 @@ AnimatorState:
   - {fileID: 7451281558421620855}
   - {fileID: 4528583763312719984}
   - {fileID: -6615995514645899799}
-  m_StateMachineBehaviours: []
+  m_StateMachineBehaviours:
+  - {fileID: 7811369680126570997}
   m_Position: {x: 50, y: 50, z: 0}
   m_IKOnFeet: 0
   m_WriteDefaultValues: 1
@@ -294,7 +346,8 @@ AnimatorState:
   - {fileID: 1397961084590670081}
   - {fileID: -3568869434159492218}
   - {fileID: 8364432947974406862}
-  m_StateMachineBehaviours: []
+  m_StateMachineBehaviours:
+  - {fileID: -4653706956887350949}
   m_Position: {x: 50, y: 50, z: 0}
   m_IKOnFeet: 0
   m_WriteDefaultValues: 1
@@ -388,6 +441,27 @@ AnimatorStateTransition:
   m_InterruptionSource: 0
   m_OrderedInterruption: 1
   m_CanTransitionToSelf: 1
+--- !u!114 &-4653706956887350949
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 89ae7ffbd33b42658b02ec41fecc0797, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::AnimationEventStateBehaviour
+  events:
+  - eventName: OnNothing
+    triggerTime: 0
+    hasTriggered: 0
+  - eventName: DisableHitboxes
+    triggerTime: 0
+    hasTriggered: 0
+  sendOnStateExitEvent: 0
+  onStateExitEventName: 
 --- !u!1102 &-4538348645725782763
 AnimatorState:
   serializedVersion: 6
@@ -533,7 +607,8 @@ AnimatorState:
   - {fileID: 809785283979772266}
   - {fileID: 2472235293599529157}
   - {fileID: -8109152961717717276}
-  m_StateMachineBehaviours: []
+  m_StateMachineBehaviours:
+  - {fileID: 630945963854595169}
   m_Position: {x: 50, y: 50, z: 0}
   m_IKOnFeet: 0
   m_WriteDefaultValues: 1
@@ -542,7 +617,8 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: ad4c1cd50c63a4a4882595ad0d57283d, type: 2}
+  m_Motion: {fileID: -4392094938460649815, guid: 451df027517ab8c4d9735047388002eb,
+    type: 3}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -595,7 +671,7 @@ AnimatorStateTransition:
   serializedVersion: 3
   m_TransitionDuration: 0.25
   m_TransitionOffset: 0
-  m_ExitTime: 1
+  m_ExitTime: 0.7
   m_HasExitTime: 1
   m_HasFixedDuration: 1
   m_InterruptionSource: 0
@@ -738,6 +814,87 @@ AnimatorStateTransition:
   m_InterruptionSource: 0
   m_OrderedInterruption: 1
   m_CanTransitionToSelf: 1
+--- !u!114 &-581510830905546112
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 89ae7ffbd33b42658b02ec41fecc0797, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::AnimationEventStateBehaviour
+  events:
+  - eventName: OnPrepareAttack
+    triggerTime: 0
+    hasTriggered: 0
+  - eventName: EnableHitboxes
+    triggerTime: 0.164
+    hasTriggered: 0
+  - eventName: OnAttack
+    triggerTime: 0.164
+    hasTriggered: 0
+  - eventName: OnCombo0
+    triggerTime: 0.164
+    hasTriggered: 0
+  - eventName: DisableHitboxes
+    triggerTime: 0.318
+    hasTriggered: 0
+  - eventName: OnFinishAttack
+    triggerTime: 0.318
+    hasTriggered: 0
+  - eventName: OnNothing
+    triggerTime: 0.89
+    hasTriggered: 0
+  sendOnStateExitEvent: 0
+  onStateExitEventName: 
+--- !u!114 &-393640315808359943
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 89ae7ffbd33b42658b02ec41fecc0797, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::AnimationEventStateBehaviour
+  events:
+  - eventName: EnableHitboxes
+    triggerTime: 0
+    hasTriggered: 0
+  - eventName: OnAttack
+    triggerTime: 0
+    hasTriggered: 0
+  - eventName: OnCombo1
+    triggerTime: 0
+    hasTriggered: 0
+  - eventName: DisableHitboxes
+    triggerTime: 0.207
+    hasTriggered: 0
+  - eventName: OnPrepareAttack
+    triggerTime: 0.207
+    hasTriggered: 0
+  - eventName: OnAttack
+    triggerTime: 0.264
+    hasTriggered: 0
+  - eventName: OnCombo2
+    triggerTime: 0.264
+    hasTriggered: 0
+  - eventName: EnableHitboxes
+    triggerTime: 0.264
+    hasTriggered: 0
+  - eventName: OnFinishAttack
+    triggerTime: 0.377
+    hasTriggered: 0
+  - eventName: OnNothing
+    triggerTime: 0.629
+    hasTriggered: 0
+  sendOnStateExitEvent: 0
+  onStateExitEventName: 
 --- !u!1102 &-105735491533574557
 AnimatorState:
   serializedVersion: 6
@@ -752,7 +909,8 @@ AnimatorState:
   - {fileID: -1394554788224369341}
   - {fileID: -5312192137260443651}
   - {fileID: 2663017488611163616}
-  m_StateMachineBehaviours: []
+  m_StateMachineBehaviours:
+  - {fileID: -581510830905546112}
   m_Position: {x: 50, y: 50, z: 0}
   m_IKOnFeet: 0
   m_WriteDefaultValues: 1
@@ -761,7 +919,8 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: 14763bec637461f4689596feefb4c843, type: 2}
+  m_Motion: {fileID: -2907786030238856662, guid: 451df027517ab8c4d9735047388002eb,
+    type: 3}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -909,7 +1068,8 @@ AnimatorState:
   m_Transitions:
   - {fileID: 3487000109059837057}
   - {fileID: -2040960570840800022}
-  m_StateMachineBehaviours: []
+  m_StateMachineBehaviours:
+  - {fileID: -393640315808359943}
   m_Position: {x: 50, y: 50, z: 0}
   m_IKOnFeet: 0
   m_WriteDefaultValues: 1
@@ -918,12 +1078,49 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: be937c98d7bf2f544b23255d1d5efc9c, type: 2}
+  m_Motion: {fileID: -6487103113016446215, guid: 451df027517ab8c4d9735047388002eb,
+    type: 3}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
   m_CycleOffsetParameter: 
   m_TimeParameter: 
+--- !u!114 &630945963854595169
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 89ae7ffbd33b42658b02ec41fecc0797, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::AnimationEventStateBehaviour
+  events:
+  - eventName: OnPrepareAttack
+    triggerTime: 0
+    hasTriggered: 0
+  - eventName: EnableHitboxes
+    triggerTime: 0.187
+    hasTriggered: 0
+  - eventName: OnAttack
+    triggerTime: 0.187
+    hasTriggered: 0
+  - eventName: OnCombo0
+    triggerTime: 0.187
+    hasTriggered: 0
+  - eventName: DisableHitboxes
+    triggerTime: 0.426
+    hasTriggered: 0
+  - eventName: OnFinishAttack
+    triggerTime: 0.426
+    hasTriggered: 0
+  - eventName: OnNothing
+    triggerTime: 0.6
+    hasTriggered: 0
+  sendOnStateExitEvent: 0
+  onStateExitEventName: 
 --- !u!1101 &809785283979772266
 AnimatorStateTransition:
   m_ObjectHideFlags: 1
@@ -943,9 +1140,9 @@ AnimatorStateTransition:
   serializedVersion: 3
   m_TransitionDuration: 0.25
   m_TransitionOffset: 0.025037961
-  m_ExitTime: 0.6
+  m_ExitTime: 0.61
   m_HasExitTime: 1
-  m_HasFixedDuration: 1
+  m_HasFixedDuration: 0
   m_InterruptionSource: 0
   m_OrderedInterruption: 1
   m_CanTransitionToSelf: 1
@@ -986,7 +1183,8 @@ AnimatorState:
   m_CycleOffset: 0
   m_Transitions:
   - {fileID: 7413140016811127477}
-  m_StateMachineBehaviours: []
+  m_StateMachineBehaviours:
+  - {fileID: -5508207793106825438}
   m_Position: {x: 50, y: 50, z: 0}
   m_IKOnFeet: 0
   m_WriteDefaultValues: 0
@@ -995,7 +1193,8 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: dd40a3c9b632b56409e205f1a8820929, type: 2}
+  m_Motion: {fileID: -292847050710267936, guid: 451df027517ab8c4d9735047388002eb,
+    type: 3}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -1048,7 +1247,7 @@ AnimatorStateTransition:
   serializedVersion: 3
   m_TransitionDuration: 0.25
   m_TransitionOffset: 0.26996475
-  m_ExitTime: 0.6
+  m_ExitTime: 0.61
   m_HasExitTime: 1
   m_HasFixedDuration: 1
   m_InterruptionSource: 0
@@ -1120,7 +1319,7 @@ AnimatorStateTransition:
   serializedVersion: 3
   m_TransitionDuration: 0.25
   m_TransitionOffset: 0
-  m_ExitTime: 1
+  m_ExitTime: 0.9
   m_HasExitTime: 1
   m_HasFixedDuration: 1
   m_InterruptionSource: 0
@@ -1154,6 +1353,27 @@ AnimatorStateTransition:
   m_InterruptionSource: 0
   m_OrderedInterruption: 1
   m_CanTransitionToSelf: 1
+--- !u!114 &3639835510643986664
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 89ae7ffbd33b42658b02ec41fecc0797, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::AnimationEventStateBehaviour
+  events:
+  - eventName: DisableHitboxes
+    triggerTime: 0
+    hasTriggered: 0
+  - eventName: OnNothing
+    triggerTime: 0
+    hasTriggered: 0
+  sendOnStateExitEvent: 0
+  onStateExitEventName: 
 --- !u!1101 &4528583763312719984
 AnimatorStateTransition:
   m_ObjectHideFlags: 1
@@ -1217,7 +1437,8 @@ AnimatorState:
   m_Transitions:
   - {fileID: -4188328612537471964}
   - {fileID: 9033546887662053067}
-  m_StateMachineBehaviours: []
+  m_StateMachineBehaviours:
+  - {fileID: -6645520851508240738}
   m_Position: {x: 50, y: 50, z: 0}
   m_IKOnFeet: 0
   m_WriteDefaultValues: 0
@@ -1226,7 +1447,8 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: 735edd388e5f55b4dbf1eb7f3d1675db, type: 2}
+  m_Motion: {fileID: 8226094777854282354, guid: 451df027517ab8c4d9735047388002eb,
+    type: 3}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -1366,6 +1588,27 @@ AnimatorStateTransition:
   m_InterruptionSource: 1
   m_OrderedInterruption: 1
   m_CanTransitionToSelf: 1
+--- !u!114 &7811369680126570997
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 89ae7ffbd33b42658b02ec41fecc0797, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::AnimationEventStateBehaviour
+  events:
+  - eventName: OnNothing
+    triggerTime: 0
+    hasTriggered: 0
+  - eventName: DisableHitboxes
+    triggerTime: 0
+    hasTriggered: 0
+  sendOnStateExitEvent: 0
+  onStateExitEventName: 
 --- !u!1101 &8364432947974406862
 AnimatorStateTransition:
   m_ObjectHideFlags: 1
@@ -1463,7 +1706,7 @@ AnimatorStateTransition:
   serializedVersion: 3
   m_TransitionDuration: 0.25
   m_TransitionOffset: 0
-  m_ExitTime: 0.9208861
+  m_ExitTime: 0.81
   m_HasExitTime: 1
   m_HasFixedDuration: 1
   m_InterruptionSource: 0
@@ -1484,7 +1727,8 @@ AnimatorState:
   - {fileID: -8423470704543532598}
   - {fileID: 583213803521912122}
   - {fileID: 3444139043848145681}
-  m_StateMachineBehaviours: []
+  m_StateMachineBehaviours:
+  - {fileID: 3639835510643986664}
   m_Position: {x: 50, y: 50, z: 0}
   m_IKOnFeet: 0
   m_WriteDefaultValues: 1
