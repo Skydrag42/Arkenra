@@ -53,6 +53,17 @@ public partial class PlayerController
 		}
 	}
 
+	public void OnParry(InputAction.CallbackContext context)
+	{
+		if (context.performed)
+		{
+			if (attackState != AttackState.Attacking)
+			{
+				StartParry();
+			}
+		}
+	}
+
 	public void OnSwitchWeapon(InputAction.CallbackContext context)
 	{
 		if (context.performed)

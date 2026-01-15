@@ -32,6 +32,13 @@ public class Entity : MonoBehaviour
     public List<Transform> targetLocks;
     [HideInInspector]
     public AttackState attackState = AttackState.Nothing;
+    
+    private bool isParrying;
+    public virtual bool IsParrying
+    {
+        get { return isParrying; }
+        protected set { isParrying = value; }
+    }
 
 
     [Header("UI")]
@@ -153,7 +160,22 @@ public class Entity : MonoBehaviour
         }
         ApplyDamage(damage);
     }
+    
+    /// <summary>
+    /// Called when entity's attack got parried
+    /// </summary>
+    public virtual void AttackParried()
+    {
 
+    }
+
+    /// <summary>
+    /// Called when the entity successfully parried an incoming attack
+    /// </summary>
+    public virtual void SuccessfulParry()
+    {
+
+    }
 
     /// <summary>
     /// 

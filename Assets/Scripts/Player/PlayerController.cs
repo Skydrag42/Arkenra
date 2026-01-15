@@ -15,6 +15,7 @@ public partial class PlayerController : Entity
 	public PlayerInput input;
 	public CinemachineFreeLook freeLookCam;
 	public CinemachineVirtualCamera lockedCam;
+	public AudioSource sfxSource;
 
 	private Transform currentLockedEntity;
 	public Transform lockedOnFollow;
@@ -94,7 +95,24 @@ public partial class PlayerController : Entity
 	public VisualEffect dashVFX, superDashVFX;
 	[ColorUsage(true, true)] public Color dashColor, superDashColor;
 
-	[Header("Gravity - Ground check")]
+	[Header("Parry")]
+	public AudioClip parrySFX;
+	public float parryDelay = 0.5f;
+	public float parryDuration = 0.2f, parryExtendedDuration = 0.1f;
+	private bool canStartParry = true;
+    public override bool IsParrying 
+	{ 
+		get => base.IsParrying;
+		protected set
+		{
+			base.IsParrying = value;
+			animator.SetBool("isParrying", value);
+		}
+	}
+    private readonly int parryAnimStateHash = Animator.StringToHash("Parry");
+
+
+    [Header("Gravity - Ground check")]
 	public Transform groundCheckOrigin;
 	public float groundCheckRadius = .45f;
 	public LayerMask groundLayer;
@@ -219,9 +237,9 @@ public partial class PlayerController : Entity
 		Vector3 movement = new Vector3(moveInput.x, 0, moveInput.y);
 		movement = Camera.main.transform.TransformDirection(movement);
 		movement.y = 0;
-		
 
-		Move(movement);
+		Rotate(movement);
+		//Move(movement); // will need rework to allow movement while airborne/jumping
 		Dash(movement);
 		Jump(movement);
 		//Climb(movement);
@@ -258,7 +276,29 @@ public partial class PlayerController : Entity
 		animator.SetBool("isGrounded", grounded);
 	}
 
-	private void Move(Vector3 movement)
+
+	private void Rotate(Vector3 movement)
+	{
+        if (allowRotation)
+        {
+            transform.rotation = Quaternion.Lerp(transform.rotation,
+                    Quaternion.LookRotation(movement != Vector3.zero ? movement : new Vector3(transform.forward.x, 0, transform.forward.z)),
+                    Time.deltaTime * rotationSpeed);
+        }
+    }
+
+    public void MoveFromRootMotion(Vector3 animatorVelocity)
+    {
+        if (IsSuperDashing || IsDashing) return;
+
+        if (allowMovement)
+        {
+            Vector3 velocity = animatorVelocity;
+            velocity.y = rb.linearVelocity.y;
+			rb.linearVelocity = velocity;
+        }
+    }
+    private void Move(Vector3 movement)
 	{
 		if (!IsSuperDashing && !IsDashing)
 		{
@@ -282,13 +322,6 @@ public partial class PlayerController : Entity
 				horizontalVelocity.y = rb.linearVelocity.y;
 				rb.linearVelocity = horizontalVelocity;
 			}
-		}
-
-		if (allowRotation)
-		{
-			transform.rotation = Quaternion.Lerp(transform.rotation,
-					Quaternion.LookRotation(movement != Vector3.zero ? movement : new Vector3(transform.forward.x, 0, transform.forward.z)),
-					Time.deltaTime * rotationSpeed);
 		}
 	}
 
@@ -524,10 +557,54 @@ public partial class PlayerController : Entity
 		}
 	}
 
+	public void StartParry()
+	{
+		if (!IsDashing && canStartParry)
+		{
+			IsParrying = true;
+			animator.Play(parryAnimStateHash);
 
-	
+			if (parryRoutine != null)
+				StopCoroutine(parryRoutine);
+			parryRoutine = StartCoroutine(StopParry(parryDuration));
 
-	private void OnCollisionEnter(Collision collision)
+			canStartParry = false;
+			if (parryDelayRoutine != null) StopCoroutine(parryDelayRoutine);
+			parryDelayRoutine = StartCoroutine(WaitParryDelay());
+		}
+	}
+
+	Coroutine parryRoutine;
+	public IEnumerator StopParry(float duration)
+	{
+		yield return new WaitForSeconds(duration);
+		IsParrying = false;
+	}
+
+	Coroutine parryDelayRoutine;
+	private IEnumerator WaitParryDelay()
+	{
+		yield return new WaitForSeconds(parryDelay);
+		canStartParry = true;
+	}
+
+    public override void SuccessfulParry()
+    {
+		// TODO: check if it is punishing enough when smashing button (parryDelay too short?) or find a way to punish button smashing
+
+		sfxSource.clip = parrySFX;
+		sfxSource.Play();
+		// allow instantaneous parry again, so that fast multi-hit attacks can be completely parried
+		canStartParry = true;
+		// also increase parrying duration for this parry in case of attacks too fast to be parried via multiple inputs
+		// should not be increased too much so that you still need to parry again.
+		if (parryRoutine != null) StopCoroutine(parryRoutine);
+		StartCoroutine(StopParry(parryExtendedDuration));
+    }
+
+
+
+    private void OnCollisionEnter(Collision collision)
 	{
 		if (IsDashing || IsSuperDashing)
 			rb.linearVelocity = Vector3.zero;

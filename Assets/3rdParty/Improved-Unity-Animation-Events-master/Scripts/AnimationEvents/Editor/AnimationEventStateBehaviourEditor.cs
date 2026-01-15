@@ -280,7 +280,7 @@ public class AnimationEventStateBehaviourEditor : Editor {
     [MenuItem("GameObject/Enforce T-Pose", false, 0)]
     static void EnforceTPose() {
         GameObject selected = Selection.activeGameObject;
-        if (!selected || !selected.TryGetComponent(out Animator animator) || !animator.avatar) return;
+        if (!selected || !selected.TryGetComponent(out Animator animator) || !animator.avatar || !animator.avatar.isHuman) return;
 
         SkeletonBone[] skeletonBones = animator.avatar.humanDescription.skeleton;
 

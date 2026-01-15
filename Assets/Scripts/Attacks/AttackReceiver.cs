@@ -11,13 +11,24 @@ public class AttackReceiver : MonoBehaviour
 	private void OnTriggerEnter(Collider other)
 	{
 		AttackHolder attackHolder = other.GetComponentInParent<AttackHolder>();
-		if (attackHolder != null && attackHolder.transform != transform && attackHolder.GetComponent<Entity>().attackState == AttackState.Attacking)
+		Entity attacker = attackHolder.GetComponent<Entity>();
+		if (attackHolder != null && attackHolder.transform != transform && attacker.attackState == AttackState.Attacking)
 		{
 			Attack attack = attackHolder.currentAttack;
 			if (attack.isMultiHit || !attackHolder.damageDealt)
 			{
-				Debug.Log("Sending attack to entity " % Colorize.Olive + entity.name % Colorize.Cyan);
-				entity.ReceiveAttack(attack, attackHolder.currentFollowUpState);
+
+				if (entity.IsParrying)
+				{
+					Debug.Log("Parried!" % Colorize.Gold);
+					attacker.AttackParried();
+					entity.SuccessfulParry();
+				}
+				else
+				{
+					Debug.Log("Sending attack to entity " % Colorize.Olive + entity.name % Colorize.Cyan);
+					entity.ReceiveAttack(attack, attackHolder.currentFollowUpState);
+				}
 				attackHolder.damageDealt = true;
 			}
 		}

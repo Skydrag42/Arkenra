@@ -1,4 +1,5 @@
 {
+    "version": 1,
     "name": "PlayerInputs",
     "maps": [
         {
@@ -28,15 +29,6 @@
                     "type": "Button",
                     "id": "c54e09e0-9224-4df8-b99a-a292cfbb745f",
                     "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
-                    "name": "Climb",
-                    "type": "Button",
-                    "id": "ee261bf2-2a09-45ae-ae79-be8e4703be14",
-                    "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
@@ -99,6 +91,15 @@
                     "name": "SwitchWeapon",
                     "type": "Button",
                     "id": "015713d9-fae3-4409-a485-d85fc47042b7",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Parry",
+                    "type": "Button",
+                    "id": "502b8249-34b9-4664-ad8e-8ff056a06d59",
                     "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
@@ -284,28 +285,6 @@
                 },
                 {
                     "name": "",
-                    "id": "e6671655-3773-49f6-bd32-c3ad12b85ba8",
-                    "path": "<Keyboard>/ctrl",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Climb",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "77456eb9-9a72-4b9a-95b9-23468a002888",
-                    "path": "<Gamepad>/leftShoulder",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Climb",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
                     "id": "b74aba90-e160-4642-86ac-94606cb5490d",
                     "path": "<Gamepad>/rightStick",
                     "interactions": "",
@@ -466,6 +445,28 @@
                     "processors": "",
                     "groups": ";Gamepad",
                     "action": "SwitchWeapon",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "26db2a00-64c0-46b7-82be-435a68d0e2e5",
+                    "path": "<Gamepad>/leftShoulder",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Parry",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "a8308118-a853-4b1e-999a-94fee4818e10",
+                    "path": "<Keyboard>/alt",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Parry",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

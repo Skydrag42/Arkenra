@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eaa1ba4276905b442bcaa5376cc4acbd, type: 3}
   m_Name: BigMetalSlateAS
   m_EditorClassIdentifier: 
-  animatorController: {fileID: 9100000, guid: 382e6637365039d4fa53b08abcfaa582, type: 2}
+  animatorController: {fileID: 9100000, guid: 4dff02aea1d0ebc4983c87adea4144a7, type: 2}
   lightAttack: {fileID: 11400000, guid: e5b886f84e0f14d48ac11ac249d07fb1, type: 2}
   heavyAttack: {fileID: 11400000, guid: 8bc540aec8acba14bb9b1288008ebf2a, type: 2}
   jumpingLightAttack: {fileID: 11400000, guid: c222151c144770a4bbd5d505e3197de3, type: 2}
